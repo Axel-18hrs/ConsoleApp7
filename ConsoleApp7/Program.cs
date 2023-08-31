@@ -13,12 +13,13 @@ namespace ConsoleApp7
             Console.ReadKey();
         }
 
+        
         static void FileRevision(string mainFolder)
         {
             if (string.IsNullOrEmpty(mainFolder))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Empty folder");
+                Console.WriteLine("Empty folder.");
                 return;
             }
 
