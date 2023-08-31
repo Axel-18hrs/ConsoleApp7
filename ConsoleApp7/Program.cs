@@ -5,32 +5,32 @@ namespace ConsoleApp7
 {
     internal class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
-            Console.WriteLine("// Ingresa una ruta existente:");
-            string ruta = Console.ReadLine();
-            RevisionArchivos(ruta);
+            Console.WriteLine("// Enter an existing path:");
+            string path = Console.ReadLine();
+            FileRevision(path);
             Console.ReadKey();
         }
 
-        static void RevisionArchivos(string carpetaPrincipal)
+        static void FileRevision(string mainFolder)
         {
-            if (string.IsNullOrEmpty(carpetaPrincipal))
+            if (string.IsNullOrEmpty(mainFolder))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Carpeta vacía");
+                Console.WriteLine("Empty folder");
                 return;
             }
 
-            foreach (string carpeta in Directory.GetDirectories(carpetaPrincipal))
+            foreach (string subFolder in Directory.GetDirectories(mainFolder))
             {
-                Console.WriteLine("\n " + carpeta);
-                foreach (string archivo in Directory.GetFiles(carpeta))
+                Console.WriteLine("\n " + subFolder);
+                foreach (string file in Directory.GetFiles(subFolder))
                 {
-                    Console.WriteLine(archivo.PadRight(15));
+                    Console.WriteLine(file.PadRight(15));
                 }
 
-                RevisionArchivos(carpeta);
+                FileRevision(subFolder);
             }
         }
     }
